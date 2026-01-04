@@ -8,6 +8,7 @@ I'm Max Blanksby, a junior passionate about quantum computing, coding, and build
 
 - **Projects**: A collection of my programming and engineering projects from freshman to junior year
 - **Quantum**: My quantum computing research and initiatives
+- **Blogs**: Thoughts and insights on quantum computing, programming, and technology
 - **Interests**: Personal interests including chess, gaming, and charitable work
 
 ## Website Structure
@@ -15,6 +16,7 @@ I'm Max Blanksby, a junior passionate about quantum computing, coding, and build
 - `index.html` - Home page with introduction and contact information
 - `projects.html` - Overview of all projects organized by academic year
 - `quantum.html` - Quantum computing work and research
+- `blogs.html` - Blog posts about quantum computing, programming, and technology
 - `interests.html` - Personal interests and hobbies
 - `projects/` - Individual project detail pages
 - `quantumProjects/` - Quantum-specific project pages
