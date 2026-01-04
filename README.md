@@ -19,6 +19,7 @@ I'm Max Blanksby, a junior passionate about quantum computing, coding, and build
 - `blogs.html` - Blog posts about quantum computing, programming, and technology
 - `interests.html` - Personal interests and hobbies
 - `projects/` - Individual project detail pages
+- `blogs/` - Individual blog post pages
 - `quantumProjects/` - Quantum-specific project pages
 - `static/` - Images, videos, and other static assets
 - `style.css` - Website styling
