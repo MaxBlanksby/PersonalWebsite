@@ -23,12 +23,47 @@
     <section class="project-detail">
       <h2>About This Project</h2>
       <p>
-        Developed a Python system to stream live audio between machines and render dynamic waveforms using matplotlib.
+        This project explores the fundamentals of AM (Amplitude Modulation) radio communication through a hands-on implementation using Python and Matplotlib. The system demonstrates the complete signal processing pipeline—from capturing live audio input, modulating it onto a carrier frequency, and then demodulating it back to recover the original voice signal.
+      </p>
+      
+      <h3>Technical Overview</h3>
+      <p>
+        The project implements a full AM radio transmission and reception system in software. Using Python's audio libraries, I recorded real-time voice data from users and visualized the raw audio waveforms using Matplotlib. The recorded signals were then modulated onto a carrier frequency using amplitude modulation techniques, simulating how AM radio broadcasts encode information. 
+      </p>
+      <p>
+        The modulated signal was then processed through a demodulation algorithm to extract the original voice data, demonstrating the complete transmission and reception cycle. Throughout each stage—recording, modulation, transmission, and demodulation—Matplotlib provided real-time visualization of the waveforms, allowing for clear observation of how the signal transforms through each processing step.
+      </p>
+      
+      <h3>Key Features</h3>
+      <ul>
+        <li><strong>Real-Time Audio Capture:</strong> Live voice recording and waveform visualization</li>
+        <li><strong>AM Modulation:</strong> Implementation of amplitude modulation to encode voice signals onto carrier frequencies</li>
+        <li><strong>Signal Demodulation:</strong> Extraction of the original voice signal from the modulated carrier wave</li>
+        <li><strong>Dynamic Visualization:</strong> Real-time Matplotlib rendering showing signal transformations at each processing stage</li>
+        <li><strong>Signal Analysis:</strong> Visual comparison between original, modulated, and demodulated waveforms</li>
+      </ul>
+      
+      <h3>Technologies Used</h3>
+      <ul>
+        <li>Python for signal processing and audio handling</li>
+        <li>Matplotlib for real-time waveform visualization and analysis</li>
+        <li>NumPy for mathematical operations and signal manipulation</li>
+        <li>Audio libraries for capturing and processing live voice input</li>
+      </ul>
+
+      <h3>Presentation</h3>
+      <p>
+        <a href="https://docs.google.com/presentation/d/1fhl9HBdd8VyqQfqK5BdUsBQRTgNNgnvdp1tsonm6xMY/edit?slide=id.g31c810c7877_0_36#slide=id.g31c810c7877_0_36" target="_blank">View the full project slideshow presentation →</a>
+      </p>
+
+      <h3>Source Code</h3>
+      <p>
+        <a href="https://github.com/MaxBlanksby/RadioModulation" target="_blank">View on GitHub →</a>
       </p>
 
       <h3>Screenshots & Diagrams</h3>
       <!-- Drop images into projects/real-time-audio-stream-visualizer/images/ -->
-      <img src="../../static/real-time-audio-stream-visualizer/images/audiostream.jpeg" alt="Audio waveform screenshot" class="project-img">
+      <img src="../../static/real-time-audio-stream-visualizer/images/Figure_1.png" alt="Audio waveform screenshot" class="project-img">
     </section>
   </main>
 
