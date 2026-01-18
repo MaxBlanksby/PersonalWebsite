@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuantumLink Progress: Building a Circuit Optimizer – Max Blanksby</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1>QuantumLink Progress</h1>
+    <p>Building a Quantum Circuit Optimizer from the Ground Up</p>
+  </header>
+
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../projects.html">Projects</a>
+    <a href="../quantum.html">Quantum</a>
+    <a href="../blogs.html">Blogs</a>
+    <a href="../interests.html">Interests</a>
+  </nav>
+
+  <main>
+    <section class="blog-detail">
+      <div class="blog-meta">
+        <p class="blog-date">Posted: 01/18/2026</p>
+        <p class="blog-category">Category: Quantum Computing, Research</p>
+      </div>
+
+      <h2>Current Status</h2>
+      <p>
+        For background on what QuantumLink is and why it matters, check out the <a href="../projects/junior/QuantumLink.html">main project page</a>. This post focuses on where the project stands right now and what's actually working.
+      </p>
+
+      <h2>What's Built So Far</h2>
+      <p>
+        The core pipeline is functional and working through several transformation stages:
+      </p>
+
+      <h3>1. Circuit Intake</h3>
+      <p>
+        QuantumLink can now take in quantum circuits from standard formats. The system reads the circuit definition and prepares it for processing.
+      </p>
+
+      <h3>2. JSON Representation</h3>
+      <p>
+        The circuit gets converted into a JSON format that captures all the essential information—which gates are present, what qubits they operate on, their parameters, and their ordering in the original circuit. This intermediate representation makes the data easy to manipulate and debug.
+      </p>
+
+      <h3>3. Custom Mapping</h3>
+      <p>
+        From JSON, the circuit gets mapped to my own internal representation structure. This custom mapping allows me to organize the circuit data in a way that's optimized for the dependency analysis and graph construction that comes next. It includes metadata about each gate and maintains the relationships between operations.
+      </p>
+
+      <h3>4. Graph Dependency Construction</h3>
+      <p>
+        This is where I am now. The custom mapping transforms into a directed graph where nodes represent quantum gates and edges represent dependencies between them. The graph captures which operations must happen sequentially and which are independent.
+      </p>
+
+      <p>
+        This dependency graph is the foundation for everything that comes next—identifying parallelizable operations, analyzing critical paths, and ultimately optimizing the circuit's execution order.
+      </p>
+
+      <h2>Following Along</h2>
+      <p>
+        You can follow the development on <a href="https://github.com/MaxBlanksby/QuantumLink" target="_blank">GitHub</a>. Note that not all of my current work may be pushed to the repository by the time you're reading this—I often work on features locally before committing them once they're stable and tested. The repository shows the stable, working components of the system.
+      </p>
+
+      <h2>What's Next</h2>
+      <p>
+        With the graph dependency structure in place, the next major steps are:
+      </p>
+      <ul>
+        <li>Implementing connected components analysis to identify independent circuit sections</li>
+        <li>Developing algorithms to detect parallelizable operations within the graph</li>
+        <li>Building the optimization logic that reorganizes gates based on dependency analysis</li>
+        <li>Creating validation tools to ensure optimized circuits maintain correctness</li>
+        <li>Adding support for more quantum gate types and circuit formats</li>
+      </ul>
+
+      <h2>Technical Challenges Ahead</h2>
+      <p>
+        The main challenges molimited by short coherence times and high error rates. Reducing circuit depth through parallelization means we can run more complex algorithms before quantum states decohere, potentially unlocking quantum advantage for real-world problems.
+      </p>
+
+      <h2>Closing Thoughts</h2>
+      <p>
+        The project is progressing steadily through its core implementation phases. Each component—circuit intake, JSON conversion, custom mapping, and graph construction—builds on the previous one to create a complete optimization pipeline. The foundation is solid, and now it's about building the intelligence on top of that foundation.
+      </p>
+
+      <p>
+        If you have feedback, questions, or want to contribute, feel free to reach out or check out the <a href="https://github.com/MaxBlanksby/QuantumLink" target="_blank">GitHub repository</a>
+      <p>
+        More personally, this project is teaching me what it means to work on hard, unsolved problems. It's frustrating and challenging, but also deeply rewarding. Every breakthrough, no matter how small, feels like a genuine contribution to understanding how we can make quantum computing more efficient and accessible.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        QuantumLink is still very much a work in progress. There are bugs to fix, algorithms to refine, and features to implement. But I'm committed to seeing this through and building something that could genuinely help quantum circuit designers optimize their work. The journey has been challenging, but it's also been one of the most educational and rewarding experiences of my academic career.
+      </p>
+
+      <p>
+        If you're interested in following along, you can check out the code on <a href="https://github.com/MaxBlanksby/QuantumLink" target="_blank">GitHub</a>. I'm always open to feedback, suggestions, or collaboration from others interested in quantum computing and optimization.
+      </p>
+
+      <div class="blog-navigation">
+        <a href="../blogs.html" class="back-link">← Back to All Blogs</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Max Blanksby</p>
+  </footer>
+</body>
+</html>
