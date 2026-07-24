@@ -3,45 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Quantum Link – Portfolio</title>
+  <title>QuantumLink - Portfolio</title>
   <link rel="stylesheet" href="../../style.css">
-  <style>
-    .concept-box {
-      background: #f5f5f5;
-      border-left: 4px solid #0066cc;
-      padding: 15px;
-      margin: 20px 0;
-    }
-    .comparison-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin: 20px 0;
-    }
-    .comparison-item {
-      background: #f9f9f9;
-      padding: 15px;
-      border-radius: 8px;
-    }
-    .example-circuit {
-      background: #fff;
-      border: 2px solid #ddd;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 8px;
-      font-family: monospace;
-    }
-    @media (max-width: 768px) {
-      .comparison-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 <body>
   <header>
-    <h1>Quantum Link</h1>
-    <p>A Circuit Optimization Tool for Quantum Computing</p>
+    <h1>QuantumLink</h1>
+    <p>Quantum Circuit Partitioner and Routing Optimizer</p>
   </header>
 
   <nav>
@@ -53,237 +21,84 @@
   </nav>
 
   <main>
-    <section class="project-detail">
-      
-      <h2>What is QuantumLink?</h2>
-      <p>
-        QuantumLink is a tool I'm building to make quantum computers work more efficiently. Think of it like an intelligent scheduler that looks at a quantum program and figures out which parts can run at the same time, rather than one after another. This matters because quantum computers lose their state very quickly, so we need to run programs as fast as possible.
-      </p>
+    <article class="quantumlink-detail">
+      <section class="quantumlink-intro">
+        <p class="quantumlink-label">Completed Java Project</p>
+        <h2>Optimize the circuit before it reaches the hardware.</h2>
+        <p>QuantumLink is a quantum circuit optimizer built in Java. Its central idea is that many quantum circuits contain independent sub-problems: groups of qubits that never interact. Those groups can run in parallel on hardware rather than sequentially. QuantumLink automatically identifies those opportunities and then optimizes each piece for a target hardware architecture.</p>
+        <a class="quantumlink-github" href="https://github.com/MaxBlanksby/QuantumLink" target="_blank" rel="noopener noreferrer">View the project on GitHub</a>
+      </section>
 
-      <div class="concept-box">
-        <h3>🎯 The Core Idea</h3>
-        <p>
-          Imagine you're organizing a group project where different team members need to complete tasks. Some tasks depend on others finishing first, but some tasks are completely independent and could happen simultaneously. QuantumLink does this same kind of analysis for quantum circuits—it finds the independent operations that can run in parallel, making the overall computation faster.
-        </p>
-      </div>
-
-      <h2>Starting from the Basics: What is a Quantum Circuit?</h2>
-      
-      <h3>Understanding Quantum Computing (No Physics Degree Required)</h3>
-      <p>
-        Before diving into what QuantumLink does, let's build up from the fundamentals:
-      </p>
-
-      <h4>Classical Computers vs. Quantum Computers</h4>
-      <div class="comparison-grid">
-        <div class="comparison-item">
-          <h4>Classical Computers (Your Laptop)</h4>
-          <ul>
-            <li>Work with <strong>bits</strong> that are either 0 or 1</li>
-            <li>Process information sequentially or in parallel using multiple bits</li>
-            <li>Reliable and stable</li>
-            <li>Great for most everyday tasks</li>
-          </ul>
+      <section class="quantumlink-section">
+        <h2>How It Works</h2>
+        <div class="quantumlink-steps">
+          <div>
+            <span>01</span>
+            <h3>Normalize the circuit</h3>
+            <p>Circuits are provided as JSON files. Before analysis, QuantumLink detects user-defined custom gates and expands them inline into their primitive components.</p>
+          </div>
+          <div>
+            <span>02</span>
+            <h3>Find independent work</h3>
+            <p>The circuit becomes a dependency graph, where gates are nodes and edges capture operations that share qubits and must occur in order. Connected-components analysis finds independent sub-circuits whose qubits never interact.</p>
+          </div>
+          <div>
+            <span>03</span>
+            <h3>Route for the device</h3>
+            <p>Each independent component is optimized against a target hardware topology, allowing separate chunks of computation to be executed in parallel rather than treating the circuit as one monolithic sequence.</p>
+          </div>
         </div>
-        <div class="comparison-item">
-          <h4>Quantum Computers</h4>
-          <ul>
-            <li>Work with <strong>qubits</strong> that can be 0, 1, or <em>both at once</em> (superposition)</li>
-            <li>Can explore many solutions simultaneously</li>
-            <li>Very fragile and sensitive to noise</li>
-            <li>Potentially exponentially faster for certain problems</li>
-          </ul>
+      </section>
+
+      <section class="quantumlink-section quantumlink-sabre">
+        <h2>Hardware-Aware Routing with SABRE</h2>
+        <p>Each component passes through the SABRE algorithm, short for SWAP-Based Bidirectional Heuristic Search for Effective Qubit Mapping. SABRE maps logical qubits to physical qubits and inserts the minimum SWAP operations needed to meet a device's nearest-neighbor connectivity constraints.</p>
+        <p>It evaluates candidate SWAPs one layer ahead and makes multiple forward and backward passes to improve the initial mapping and reduce the total SWAP count.</p>
+      </section>
+
+      <section class="quantumlink-section">
+        <h2>Hardware Topologies</h2>
+        <div class="quantumlink-topologies">
+          <div class="quantumlink-topology">
+            <h3>Mesh (Grid)</h3>
+            <p>Qubits are arranged in a two-dimensional grid, with each connected to up to four neighbors. This mirrors processors such as Google's Sycamore and scales to 54 qubits.</p>
+          </div>
+          <div class="quantumlink-topology">
+            <h3>Heavy-Hex</h3>
+            <p>IBM's Eagle and Osprey processors use this layout, where each qubit connects to at most three neighbors. Lower connectivity trades routing flexibility for reduced error rates and scales to 127 qubits.</p>
+          </div>
         </div>
-      </div>
+        <p class="quantumlink-note">Both topology models share a common interface, making new hardware backends straightforward to add.</p>
+      </section>
 
-      <h4>What is a Quantum Circuit?</h4>
-      <p>
-        A quantum circuit is like a recipe or flowchart for a quantum computer. It shows:
-      </p>
-      <ul>
-        <li><strong>Qubits</strong> (the quantum version of bits) represented as horizontal lines</li>
-        <li><strong>Gates</strong> (operations that manipulate qubits) shown as boxes or symbols on those lines</li>
-        <li><strong>Time flows left to right</strong>—operations on the left happen before operations on the right</li>
-      </ul>
+      <section class="quantumlink-section">
+        <h2>Tech Stack</h2>
+        <dl class="quantumlink-stack">
+          <div>
+            <dt>Java</dt>
+            <dd>Core engine for circuit parsing, graph construction, connected-components analysis, SABRE routing, and hardware topology modeling.</dd>
+          </div>
+          <div>
+            <dt>Python</dt>
+            <dd>Circuit graph visualization with NetworkX and Matplotlib, plus quantum simulation and execution with Qiskit.</dd>
+          </div>
+          <div>
+            <dt>JSON</dt>
+            <dd>Circuit input and output format, compatible with the Quirk quantum circuit simulator.</dd>
+          </div>
+        </dl>
+      </section>
 
-      <div class="example-circuit">
-        <pre>
-q0: ───H───●───X───
-           │   │
-q1: ───────X───●───
-           
-q2: ───X───────────
-
-Time →
-        </pre>
-        <p style="margin-top: 10px; color: #666;">
-          <strong>Example:</strong> A simple 3-qubit circuit. H is a Hadamard gate, X is a NOT gate, and ● with lines represents entangling operations.
-        </p>
-      </div>
-
-      <h2>The Problem: Why Circuits Need Optimization</h2>
-      
-      <h3>Circuit Depth: The Enemy of Quantum Computing</h3>
-      <p>
-        Here's the challenge: quantum computers are extremely fragile. The quantum state (the "quantumness" that makes quantum computers powerful) only lasts for a tiny fraction of a second before it degrades—this is called <strong>decoherence</strong>.
-      </p>
-
-      <div class="concept-box">
-        <h3>⏱️ Why Time Matters</h3>
-        <p>
-          Imagine you're writing a message in sand on a windy beach. The longer it takes to write, the more the wind erases what you've already written. Quantum computers face the same problem—the longer a computation takes, the more the quantum information degrades.
-        </p>
-        <p>
-          <strong>Circuit depth</strong> is the maximum number of sequential operations any qubit must go through. A shallower circuit (fewer sequential steps) means faster execution and less chance of errors.
-        </p>
-      </div>
-
-      <h3>The Opportunity: Parallelization</h3>
-      <p>
-        Not all quantum operations interfere with each other. If two gates operate on completely different qubits and don't depend on each other's results, they can theoretically happen at the same time. This is where QuantumLink comes in.
-      </p>
-
-      <h2>How QuantumLink Works</h2>
-
-      <h3>Step 1: Convert the Circuit to a Graph</h3>
-      <p>
-        QuantumLink takes a quantum circuit and converts it into a <strong>directed graph</strong>—a mathematical structure that shows relationships between things:
-      </p>
-      <ul>
-        <li><strong>Nodes (vertices)</strong> represent individual quantum gates</li>
-        <li><strong>Edges (arrows)</strong> represent dependencies—"gate B needs to wait for gate A"</li>
-      </ul>
-
-      <div class="concept-box">
-        <h3>🔗 Why Use Graphs?</h3>
-        <p>
-          Graphs are perfect for representing dependencies. If gate A and gate B both operate on the same qubit, there's an edge from A to B (meaning B must wait for A). If they operate on different qubits with no shared dependencies, there's no edge—they're independent!
-        </p>
-      </div>
-
-      <h3>Step 2: Identify Dependencies</h3>
-      <p>
-        Two gates create a dependency when:
-      </p>
-      <ul>
-        <li>They operate on the same qubit (physical constraint)</li>
-        <li>One gate's output is needed as input for another (logical constraint)</li>
-        <li>They involve entangling operations that link multiple qubits</li>
-      </ul>
-
-      <h3>Step 3: Find Parallelizable Operations</h3>
-      <p>
-        Once we have the graph, QuantumLink analyzes it to find groups of gates that:
-      </p>
-      <ul>
-        <li>Have no dependencies on each other</li>
-        <li>Don't share any qubits</li>
-        <li>Can safely execute simultaneously without changing the circuit's outcome</li>
-      </ul>
-
-      <h3>Step 4: Optimize Execution Order</h3>
-      <p>
-        Using graph algorithms (particularly connected components analysis), QuantumLink identifies all pieces of the circuit that can be run completely separately from each other. Connected components are groups of gates that are interconnected but have no dependencies on other groups—meaning these entire sections can execute in parallel.
-      </p>
-      <p>
-        Beyond this initial grouping, there are more nuanced optimizations that can be applied within and across these components, such as gate reordering, strategic parallelization within layers, and hardware-aware scheduling. The goal is to:
-      </p>
-      <ul>
-        <li>Identify independent circuit sections through connected components</li>
-        <li>Group operations into parallel layers where possible</li>
-        <li>Minimize the total number of sequential steps (reduce depth)</li>
-        <li>Maintain the exact same computational result as the original circuit</li>
-      </ul>
-
-      <h2>Real-World Impact</h2>
-
-      <h3>Why This Matters</h3>
-      <p>
-        Current quantum computers have severe limitations:
-      </p>
-      <ul>
-        <li><strong>Limited coherence time:</strong> Quantum states only last microseconds to milliseconds</li>
-        <li><strong>High error rates:</strong> More operations mean more opportunities for errors</li>
-        <li><strong>Expensive execution:</strong> Quantum computer time is limited and costly</li>
-      </ul>
-
-      <p>
-        By reducing circuit depth through parallelization, we can:
-      </p>
-      <ul>
-        <li>Run more complex algorithms before decoherence destroys the quantum state</li>
-        <li>Reduce overall error accumulation</li>
-        <li>Make better use of limited quantum hardware resources</li>
-        <li>Potentially achieve quantum advantage on problems that were previously unreachable</li>
-      </ul>
-
-      <h2>Technical Challenges</h2>
-
-      <h3>What Makes This Hard</h3>
-      <p>
-        Building QuantumLink involves solving several complex problems:
-      </p>
-
-      <h4>1. Correctness Verification</h4>
-      <p>
-        How do I prove that my optimized circuit produces the same quantum state as the original? Unlike classical programs where you can test outputs, quantum states are probabilistic and can't be directly observed without destroying them.
-      </p>
-
-      <h4>2. Graph Complexity</h4>
-      <p>
-        Large quantum circuits can have hundreds or thousands of gates. Analyzing all possible parallelization opportunities becomes computationally expensive. I'm developing heuristics that find good (not necessarily perfect) solutions efficiently.
-      </p>
-
-      <h4>3. Quantum-Specific Constraints</h4>
-      <p>
-        Some gates have special properties (like commutativity—order doesn't matter) that create optimization opportunities. Others create entanglement that imposes strict ordering requirements. The system needs to understand these nuances.
-      </p>
-
-      <h4>4. Hardware Constraints</h4>
-      <p>
-        Real quantum computers have physical limitations—not all qubits can interact with each other, some operations are faster than others, and hardware topology affects what's actually parallelizable in practice.
-      </p>
-
-      <h2>Current Progress</h2>
-      <p>
-        QuantumLink is under active development. Here's what's working now:
-      </p>
-      <ul>
-        <li>✅ Circuit parsing and graph representation</li>
-        <li>✅ Basic dependency detection between gates</li>
-        <li>✅ Graph visualization for debugging</li>
-        <li>🔄 Parallelization detection (in progress)</li>
-        <li>🔄 Optimization algorithms (in progress)</li>
-        <li>📋 Integration with quantum frameworks (planned)</li>
-        <li>📋 Comprehensive testing suite (planned)</li>
-      </ul>
-
-      <p>
-        For a detailed update on challenges and progress, check out my <a href="../../blogs/quantumlink-progress.html">blog post about QuantumLink development</a>.
-      </p>
-
-      <h2>The Vision</h2>
-      <p>
-        My goal is to create a tool that quantum circuit designers can use to automatically optimize their circuits, similar to how classical compilers optimize code for regular computers. As quantum computers become more powerful and accessible, tools like QuantumLink will be essential for getting the most out of this revolutionary technology.
-      </p>
-
-      <h2>Want to Learn More?</h2>
-      <p>
-        The project is open source and available on <a href="https://github.com/MaxBlanksby/QuantumLink" target="_blank">GitHub</a>. Whether you're a quantum computing expert or just curious about the field, I welcome feedback, questions, and collaboration.
-      </p>
-
-      <div style="margin-top: 30px; padding: 20px; background: #e8f4f8; border-radius: 8px;">
-        <h3>📚 Further Reading</h3>
-        <p>If you want to dive deeper into the concepts behind QuantumLink:</p>
+      <section class="quantumlink-section quantumlink-next">
+        <h2>What's Next</h2>
+        <p>The partitioner and routing optimizer form the foundation of a broader transpilation pipeline. Planned additions include:</p>
         <ul>
-          <li><strong>Quantum Gates:</strong> The basic building blocks of quantum circuits</li>
-          <li><strong>Circuit Depth:</strong> Understanding why shallow circuits are crucial</li>
-          <li><strong>Graph Theory:</strong> How directed graphs represent dependencies</li>
-          <li><strong>Decoherence:</strong> Why quantum states are so fragile</li>
+          <li>Native gate-set reduction for specific hardware instruction sets</li>
+          <li>A cost model that recommends the best topology for a circuit</li>
+          <li>Support for superconducting, trapped-ion, neutral-atom, and photonic qubit modalities</li>
         </ul>
-      </div>
-
-    </section>
+      </section>
+    </article>
   </main>
 
   <footer>

@@ -14,6 +14,9 @@ nav a:hover, nav a.active { text-decoration: underline; }
 /* Hero Image */
 .hero-img { width: 100%; max-height: 300px; object-fit: cover; display: block; margin-bottom: 1rem; }
 
+/* Profile Picture */
+.profile-pic { max-width: 450px; width: 100%; height: auto; display: block; margin: 0 auto 1.5rem; }
+
 /* Main */
 main { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
 
@@ -71,16 +74,22 @@ footer { background: #333; color: #fff; text-align: center; padding: 1rem 0; mar
 }
 .interest-card {
   background: #fff;
+  border: 0;
   border-radius: 8px;
+  color: #333;
+  cursor: pointer;
+  font: inherit;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-align: center;
 }
-.interest-card:hover {
+.interest-card:hover,
+.interest-card:focus-visible {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
+.interest-card:focus-visible { outline: 3px solid #147a8a; outline-offset: 3px; }
 .interest-img {
   width: 100%;
   height: 150px;
@@ -93,6 +102,34 @@ footer { background: #333; color: #fff; text-align: center; padding: 1rem 0; mar
   padding: 0 1rem 1rem;
   font-size: 0.95rem;
   color: #555;
+}
+.interest-dialog {
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  inset: 0;
+  margin: auto;
+  max-width: 760px;
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  padding: 0;
+  position: fixed;
+  width: calc(100% - 2rem);
+}
+.interest-dialog::backdrop { background: rgba(20, 40, 45, 0.7); }
+.dialog-content { padding: 2rem; }
+.dialog-label { color: #147a8a; font-size: 0.8rem; font-weight: bold; letter-spacing: 0.08em; text-transform: uppercase; }
+.dialog-content h2 { margin: 0.35rem 0 0.75rem; }
+.dialog-content p + p { margin-top: 0.85rem; }
+.dialog-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.dialog-links a { background: #147a8a; border-radius: 4px; color: #fff; font-weight: bold; padding: 0.55rem 0.8rem; text-decoration: none; }
+.dialog-links a:hover { background: #0f5e6a; }
+.dialog-close { background: #fff; border: 0; border-radius: 50%; color: #333; cursor: pointer; font-size: 2rem; height: 2.25rem; line-height: 1; position: absolute; right: 0.75rem; top: 0.75rem; width: 2.25rem; }
+.dialog-close:focus-visible { outline: 3px solid #147a8a; outline-offset: 2px; }
+.game-achievements { margin: 1rem 0 0 1.25rem; }
+.game-achievements li + li { margin-top: 0.75rem; }
+@media (max-width: 700px) {
+  .dialog-content { padding: 1.5rem; }
 }
 
 /* Blog Styles */
@@ -170,3 +207,80 @@ footer { background: #333; color: #fff; text-align: center; padding: 1rem 0; mar
   font-weight: bold; 
 }
 .back-to-blogs:hover { text-decoration: underline; }
+
+/* QuantumLink project page */
+.quantumlink-detail {
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.quantumlink-intro,
+.quantumlink-section {
+  padding: 2.25rem;
+}
+.quantumlink-intro {
+  background: #eaf4f7;
+  border-bottom: 4px solid #147a8a;
+}
+.quantumlink-label {
+  color: #147a8a;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.quantumlink-intro h2 {
+  font-size: 2rem;
+  margin: 0.4rem 0 1rem;
+}
+.quantumlink-github {
+  background: #147a8a;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  margin-top: 1.25rem;
+  padding: 0.6rem 0.9rem;
+  text-decoration: none;
+}
+.quantumlink-github:hover { background: #0f5e6a; }
+.quantumlink-section { border-bottom: 1px solid #d8e1e4; }
+.quantumlink-section:last-child { border-bottom: 0; }
+.quantumlink-section h2 { margin-bottom: 1rem; }
+.quantumlink-section h3 { color: #147a8a; margin-bottom: 0.5rem; }
+.quantumlink-section p + p { margin-top: 0.85rem; }
+.quantumlink-steps,
+.quantumlink-topologies,
+.quantumlink-stack {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 1.25rem;
+}
+.quantumlink-steps > div,
+.quantumlink-topology,
+.quantumlink-stack > div {
+  background: #f4f8f8;
+  border-top: 3px solid #147a8a;
+  padding: 1.1rem;
+}
+.quantumlink-steps span {
+  color: #147a8a;
+  font-weight: bold;
+}
+.quantumlink-topologies { grid-template-columns: repeat(2, 1fr); }
+.quantumlink-note { color: #556064; font-style: italic; }
+.quantumlink-stack dt { color: #147a8a; font-size: 1.1rem; font-weight: bold; }
+.quantumlink-stack dd { margin: 0.5rem 0 0; }
+.quantumlink-next { background: #f8fbfb; }
+.quantumlink-next ul { margin: 1rem 0 0 1.25rem; }
+.quantumlink-next li + li { margin-top: 0.4rem; }
+
+@media (max-width: 700px) {
+  .quantumlink-intro,
+  .quantumlink-section { padding: 1.5rem; }
+  .quantumlink-intro h2 { font-size: 1.65rem; }
+  .quantumlink-steps,
+  .quantumlink-topologies,
+  .quantumlink-stack { grid-template-columns: 1fr; }
+}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Interests – Max Blanksby</title>
+  <title>Interests - Max Blanksby</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,53 +22,121 @@
 
   <main>
     <section id="interests">
-      <h2></h2>
+      <h2>Interests</h2>
       <div class="interests-grid">
-
-        <div class="interest-card">
-          <img src="static/interests-page/lifting-straps-green.png" alt="lifting-straps" class="interest-img">
+        <button class="interest-card" type="button" data-dialog="weightlifting-dialog">
+          <img src="static/interests-page/lifting-straps-green.png" alt="lifting straps" class="interest-img">
           <h3>Weightlifting</h3>
-          <p>I have been weightlifting for several years. I focus on building strength, improving technique, and staying consistent with training.</p>
-        </div>
+          <p>Interested in exercise science, supplements, and pharmacology alongside consistent strength training.</p>
+        </button>
 
-
-        <div class="interest-card">
+        <button class="interest-card" type="button" data-dialog="basketball-dialog">
           <img src="static/interests-page/basket.png" alt="Basketball" class="interest-img">
           <h3>Basketball</h3>
           <p>I play pickup basketball and played for my school. I enjoy watching the NBA with my friends and family, my favorite player is Nikola Jokic.</p>
-        </div>
+        </button>
 
-        <div class="interest-card">
+        <button class="interest-card" type="button" data-dialog="chess-dialog">
           <img src="static/interests-page/chess.jpg" alt="Chess" class="interest-img">
           <h3>Chess</h3>
-          <p>I have been playing chess for a few years. I enjoy the strategy behind the game and regularly play on chess.com to improve.</p>
-        </div>
+          <p>A strategy hobby I play for fun and improvement, without pursuing highly competitive play.</p>
+        </button>
 
-        <div class="interest-card">
-          <img src="static/interests-page/mtg1.jpg" alt="Mtg" class="interest-img">
+        <button class="interest-card" type="button" data-dialog="magic-dialog">
+          <img src="static/interests-page/mtg1.jpg" alt="Magic: The Gathering cards" class="interest-img">
           <h3>Magic The Gathering</h3>
-          <p>I have played Magic The Gathering since I was young. I enjoy building decks and competing in different formats.</p>
-        </div>
+          <p>Mostly a Commander deck builder; previously competed in Modern and played in several Grand Prix events.</p>
+        </button>
 
-        <div class="interest-card">
-          <img src="static/interests-page/videogames.jpg" alt="videogames" class="interest-img">
+        <button class="interest-card" type="button" data-dialog="games-dialog">
+          <img src="static/interests-page/videogames.jpg" alt="Video game controller" class="interest-img">
           <h3>Video Games</h3>
-          <p>I enjoy strategy and competitive games and like keeping up with new titles and game design trends.</p>
-        </div>
-
-        <div class="interest-card">
-          <img src="static/interests-page/charity.jpg" alt="charity" class="interest-img">
-          <h3>MAF Charity Work</h3>
-          <p>I participated in a MAF program where we allocated ten thousand dollars across local nonprofits, gaining experience in evaluating proposals and community needs.</p>
-        </div>
-
-
+          <p>Competitive achievements across Overwatch, Marvel Rivals, and Fortnite, including top-500-level play.</p>
+        </button>
       </div>
     </section>
+
+    <dialog class="interest-dialog" id="weightlifting-dialog" aria-labelledby="weightlifting-title">
+      <button class="dialog-close" type="button" aria-label="Close Weightlifting details">&times;</button>
+      <div class="dialog-content">
+        <p class="dialog-label">Training</p>
+        <h2 id="weightlifting-title">Weightlifting</h2>
+        <p>I have been lifting for a while and am interested in the science behind training: how exercise affects the body, how to build strength effectively, and how technique shapes long-term progress.</p>
+        <p>I am also interested in supplements and pharmacology, and find the intersection of performance, health, and physiology fascinating.</p>
+        <!-- Add links, additional images, or more text for this interest here. -->
+        <div class="dialog-links"></div>
+      </div>
+    </dialog>
+
+    <dialog class="interest-dialog" id="basketball-dialog" aria-labelledby="basketball-title">
+      <button class="dialog-close" type="button" aria-label="Close Basketball details">&times;</button>
+      <div class="dialog-content">
+        <p class="dialog-label">On the Court</p>
+        <h2 id="basketball-title">Basketball</h2>
+        <p>I play pickup basketball and played for my school. I also enjoy watching the NBA with friends and family, especially Nikola Jokic's game.</p>
+        <div class="dialog-links">
+          <a href="https://www.nba.com/" target="_blank" rel="noopener noreferrer">NBA</a>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="interest-dialog" id="chess-dialog" aria-labelledby="chess-title">
+      <button class="dialog-close" type="button" aria-label="Close Chess details">&times;</button>
+      <div class="dialog-content">
+        <p class="dialog-label">Strategy</p>
+        <h2 id="chess-title">Chess</h2>
+        <p>Chess is a hobby for me. I enjoy the strategy and regularly play online, but I have not tried to pursue it at a highly competitive level.</p>
+        <div class="dialog-links">
+          <a href="https://www.chess.com/member/maxblinkersby" target="_blank" rel="noopener noreferrer">My Chess.com Profile</a>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="interest-dialog" id="magic-dialog" aria-labelledby="magic-title">
+      <button class="dialog-close" type="button" aria-label="Close Magic The Gathering details">&times;</button>
+      <div class="dialog-content">
+        <p class="dialog-label">Tabletop Games</p>
+        <h2 id="magic-title">Magic The Gathering</h2>
+        <p>I mostly play Commander and enjoy building decks around new ideas and synergies. Earlier on, I competed in Modern and played in several Grand Prix events.</p>
+        <div class="dialog-links">
+          <a href="https://moxfield.com/users/TheMoosey" target="_blank" rel="noopener noreferrer">My Moxfield Decks</a>
+          <a href="https://magic.wizards.com/" target="_blank" rel="noopener noreferrer">Magic: The Gathering</a>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="interest-dialog" id="games-dialog" aria-labelledby="games-title">
+      <button class="dialog-close" type="button" aria-label="Close Video Games details">&times;</button>
+      <div class="dialog-content">
+        <p class="dialog-label">Games</p>
+        <h2 id="games-title">Video Games</h2>
+        <p>I enjoy competitive games and have worked toward high ranks across several titles.</p>
+        <ul class="game-achievements">
+          <li><strong>Overwatch:</strong> Reached Grandmaster, an elite rank generally representing about the top 1% of competitive players.</li>
+          <li><strong>Marvel Rivals:</strong> Reached One Above All, placing among the top 500 players (0.001%). I also placed top 16 in MRC and won $200.</li>
+          <li><strong>Fortnite:</strong> Reached Unreal in multiple consecutive seasons, a rank generally representing roughly the top 1% of ranked players. I was also Champion League in Arena for multiple seasons and won multiple Victory Cash Cups.</li>
+        </ul>
+        <div class="dialog-links"></div>
+      </div>
+    </dialog>
   </main>
 
   <footer>
     <p>&copy; 2025 Max Blanksby</p>
   </footer>
+
+  <script>
+    document.querySelectorAll(".interest-card").forEach((card) => {
+      const dialog = document.getElementById(card.dataset.dialog);
+      card.addEventListener("click", () => dialog.showModal());
+    });
+
+    document.querySelectorAll(".interest-dialog").forEach((dialog) => {
+      dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    });
+  </script>
 </body>
 </html>
