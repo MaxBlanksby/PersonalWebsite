@@ -65,6 +65,40 @@ footer { background: #333; color: #fff; text-align: center; padding: 1rem 0; mar
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* Emergence Quantum internship */
+.emergence-internship-detail h3 { margin-top: 2rem; }
+.emergence-internship-photo {
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: block;
+  height: auto;
+  margin: 1rem auto 0;
+  max-width: 700px;
+  width: 100%;
+}
+.emergence-measurement-plots {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1rem;
+}
+.emergence-measurement-plots figure { margin: 0; }
+.emergence-measurement-plots img {
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: block;
+  height: auto;
+  width: 100%;
+}
+.emergence-measurement-plots figcaption {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+@media (max-width: 700px) {
+  .emergence-measurement-plots { grid-template-columns: 1fr; }
+}
+
 /* Interests grid and cards */
 .interests-grid {
   display: grid;
